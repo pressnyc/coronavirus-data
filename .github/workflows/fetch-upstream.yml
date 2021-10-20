@@ -20,9 +20,10 @@ jobs:
         git config user.name "Automated"
         git config user.email "actions@users.noreply.github.com"
         git fetch upstream
-        git checkout main        
-        git merge upstream/main
+        git checkout master
+        git remote add upstream git@github.com:nychealth/coronavirus-data.git
+        git merge upstream/master
 
         timestamp=$(date -u)
         git commit -m "Latest data: ${timestamp}" || exit 0
-        git push origin main
+        git push origin master
