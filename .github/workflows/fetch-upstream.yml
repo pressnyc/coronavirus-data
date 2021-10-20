@@ -22,7 +22,8 @@ jobs:
         git remote add upstream https://github.com/nychealth/coronavirus-data.git
         git fetch upstream
         git merge upstream/master
-
-        timestamp=$(date -u)
-        git commit -m "Latest data: ${timestamp}" || exit 0
         git push origin master
+
+#        timestamp=$(date -u)
+#        git commit -m "Latest data: ${timestamp}" || exit 0
+#        git push origin master
