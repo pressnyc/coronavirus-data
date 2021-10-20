@@ -19,9 +19,9 @@ jobs:
       run: |-
         git config user.name "Automated"
         git config user.email "actions@users.noreply.github.com"
+        git remote add upstream git@github.com:nychealth/coronavirus-data.git
         git fetch upstream
         git checkout master
-        git remote add upstream git@github.com:nychealth/coronavirus-data.git
         git merge upstream/master
 
         timestamp=$(date -u)
