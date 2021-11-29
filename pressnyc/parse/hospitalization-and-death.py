@@ -21,12 +21,16 @@ dateMatcher = re.compile('[0-9]+/[0-9]+')
 
 for commit in list(repo.iter_commits('master', paths=path)):
 
-  dateMatch = dateMatcher.search(commit.message)
-  
-  date = ''
-  if dateMatch:
-    date = dateMatch[0] + '/' + str(datetime.datetime.fromtimestamp(commit.committed_date).year)
 
+#  dateMatch = dateMatcher.search(commit.message)  
+#  date = ''
+#  if dateMatch:
+#    date = dateMatch[0] + '/' + str(datetime.datetime.fromtimestamp(commit.committed_date).year)
+  
+  date = str(datetime.datetime.fromtimestamp(commit.committed_date).month)\
+     + '/' + str(datetime.datetime.fromtimestamp(commit.committed_date).day)\
+     + '/' + str(datetime.datetime.fromtimestamp(commit.committed_date).year)
+  
   page_content = (commit.tree / path).data_stream.read()
   
   df = pd.read_csv(io.StringIO(page_content.decode('utf-8')))
