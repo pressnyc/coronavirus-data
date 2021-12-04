@@ -34,6 +34,8 @@ for commit in list(repo.iter_commits('master', paths=path)):
      + '/' + str(datetime.datetime.fromtimestamp(commit.committed_date).day)\
      + '/' + str(datetime.datetime.fromtimestamp(commit.committed_date).year)
   
+  if date == '12/2/2021': continue
+  
   page_content = (commit.tree / path).data_stream.read()
   
   df = pd.read_csv(io.StringIO(page_content.decode('utf-8')))
